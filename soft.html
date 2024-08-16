@@ -1,23 +1,32 @@
+<!-- index.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Telegram Web App</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
 </head>
 <body>
-    <h1>Привет из Web App!</h1>
-    <button onclick="sendData()">Отправить данные боту</button>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
 
     <script>
-        let tg = window.Telegram.WebApp;
-        tg.ready();
+        function submitForm() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
 
-        function sendData() {
-            let data = {
-                "name": "John Doe",
-                "email": "john@example.com"
-            };
-            tg.sendData(JSON.stringify(data));
+            if (username && password) {
+                // Отправка данных в WebApp
+                Telegram.WebApp.sendData(JSON.stringify({ username, password }));
+                alert('Data sent successfully!');
+            } else {
+                alert('Please fill all fields!');
+            }
         }
     </script>
 </body>
