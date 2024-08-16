@@ -8,7 +8,7 @@
 </head>
 <body>
     <form id="loginForm">
-        <label for="username">Username:</label>
+        <label for="username">Пользователь:</label>
         <input type="text" id="username" name="username" required><br><br>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required><br><br>
@@ -16,6 +16,8 @@
     </form>
 
     <script>
+        Telegram.WebApp.ready();
+
         function submitForm() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
